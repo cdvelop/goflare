@@ -312,10 +312,9 @@ Both methods should handle:
 ## Future Enhancements
 
 1. **Custom Templates**: Allow users to provide custom worker.mjs templates
-2. **Browser Runtime**: Add support for browser WASM runtime
-3. **Module Bundling**: Integrate with esbuild for optimization
-4. **Sourcemaps**: Generate sourcemaps for debugging
-5. **Watch Mode**: Auto-regenerate on file changes
+2. **Module Bundling**: Integrate with esbuild for optimization
+3. **Sourcemaps**: Generate sourcemaps for debugging
+4. **Watch Mode**: Auto-regenerate on file changes
 
 ## References
 

@@ -73,8 +73,7 @@ pages/
    ├── common/
    │   └── worker.mjs        # Main worker logic
    └── runtime/
-       ├── cloudflare.mjs    # Cloudflare-specific runtime
-       └── browser.mjs       # Browser runtime
+       └── cloudflare.mjs    # Cloudflare-specific runtime
    ```
 
 3. **Template Content**:
@@ -105,7 +104,7 @@ var assets embed.FS
 // Directory structure:
 assets/
 ├── runtime/
-│   └── cloudflare.mjs       # Runtime context template
+│   └── cloudflare.mjs       # Cloudflare-specific runtime
 ├── common/
 │   └── worker.mjs            # Template for Workers
 └── pages/
@@ -138,6 +137,18 @@ The `wasm_exec.js` file should come from tinywasm's cache:
 1. Implement `GeneratePagesFiles()` with Advanced Mode
 2. Generate `_worker.js` with ASSETS binding
 3. Handle single directory structure (pages/)
+
+## Implementation Status
+
+### ✅ Completed Tasks
+
+1. **wasm_exec.js File Management**: Created comprehensive unit tests in `goflare_test.go`
+   - `TestWasmExecFiles`: Tests file copying functionality for Go and TinyGo wasm_exec.js files
+   - `TestWasmExecFileVersions`: Tests version change detection using MD5 hashes
+   - `TestEnsureWasmExecFilesExists`: Tests the main functionality - verify existence, create if missing, update if versions changed
+   - `ensureWasmExecFile()`: Core function that implements the requested logic
+   - **Files are copied to `assets/` directory** after running tests, as specified in documentation
+   - All tests pass successfully and handle both Go 1.25.2 and TinyGo 0.39.0 versions
 
 ### Priority 3: Enhancements
 1. Add error handling and validation
