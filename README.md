@@ -30,3 +30,4 @@ import "github.com/cdvelop/goflare"
 
 ---
 
+## [Contributing](https://github.com/cdvelop/cdvelop/blob/main/CONTRIBUTING.md)

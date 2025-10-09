@@ -1,13 +1,18 @@
 package goflare
 
 import (
+	"embed"
 	"path"
 
 	"github.com/cdvelop/tinywasm"
 )
 
+//go:embed assets
+var assets embed.FS
+
 type Goflare struct {
-	tw *tinywasm.TinyWasm
+	tw     *tinywasm.TinyWasm
+	config *Config
 }
 
 type Config struct {
@@ -16,6 +21,9 @@ type Config struct {
 	MainInputFile              string // eg: "main.worker.go"
 	Logger                     func(message ...any)
 	CompilingArguments         func() []string
+	// Pages-specific configuration
+	PagesApiRoutePrefix string // API route prefix for Pages Functions (default: "/api/")
+	PagesWasmFileName   string // WASM file name for Pages Functions (default: "app.wasm")
 }
 
 // New creates a new Goflare instance with the provided configuration
@@ -23,6 +31,13 @@ type Config struct {
 // Default values: mainInputFile="main.wasm.go"
 
 func New(c *Config) *Goflare {
+	// Set defaults
+	if c.PagesApiRoutePrefix == "" {
+		c.PagesApiRoutePrefix = "/api/"
+	}
+	if c.PagesWasmFileName == "" {
+		c.PagesWasmFileName = "app.wasm"
+	}
 
 	outputFilesDir := path.Join(c.AppRootDir, c.WorkerDirSubRelativeOutput)
 
@@ -37,7 +52,8 @@ func New(c *Config) *Goflare {
 	})
 
 	g := &Goflare{
-		tw: tw,
+		tw:     tw,
+		config: c,
 	}
 
 	return g

@@ -37,10 +37,8 @@ deploy/
 **Output Structure**:
 ```
 pages/
-├── _worker.js     # Advanced Mode entry point
+├── _worker.js     # Advanced Mode entry point (combined JS)
 ├── app.wasm
-├── wasm_exec.js
-├── runtime.mjs
 └── index.html     # Static assets
 ```
 
@@ -149,6 +147,15 @@ The `wasm_exec.js` file should come from tinywasm's cache:
    - `ensureWasmExecFile()`: Core function that implements the requested logic
    - **Files are copied to `assets/` directory** after running tests, as specified in documentation
    - All tests pass successfully and handle both Go 1.25.2 and TinyGo 0.39.0 versions
+
+2. **GeneratePagesFiles() Implementation**: Complete implementation of Pages Functions generation
+   - Creates `pages/` output directory structure
+   - Generates single `_worker.js` file with all JavaScript code inline (wasm_exec.js + runtime.mjs + worker logic)
+   - Supports configurable API route prefix (default: "/api/")
+   - Supports configurable WASM filename (default: "app.wasm")
+   - Eliminates need for separate wasm_exec.js and runtime.mjs files
+   - Reduces output from 4 files to 2 files: `_worker.js` and `app.wasm`
+   - Tested and working correctly
 
 ### Priority 3: Enhancements
 1. Add error handling and validation

@@ -1,6 +1,21 @@
 # GoFlare Build Architecture Summary
 
-This document provides an overview of the build process for both Cloudflare Workers and Pages Functions in the GoFlare package.
+This docum#### Common Files (Both Workers & Pages)
+| File | Purpose | Source |
+|------|---------|--------|
+| `app.wasm` | Compiled Go binary | tinywasm output |
+
+#### Workers-Specific Files
+| File | Purpose | Source |
+|------|---------|--------|
+| `wasm_exec.js` | WebAssembly runtime (Go class) | Go/TinyGo toolchain |
+| `runtime.mjs` | Cloudflare context provider | Generated template |
+| `worker.mjs` | Main worker logic | Generated template |
+
+#### Pages-Specific Files
+| File | Purpose | Source |
+|------|---------|--------|
+| `_worker.js` | Combined worker (wasm_exec + runtime + logic) | Generated template |vides an overview of the build process for both Cloudflare Workers and Pages Functions in the GoFlare package.
 
 ## Architecture Overview
 
@@ -92,21 +107,26 @@ deploy/
 ```
 1. Create output directory (pages/)
 2. Compile WASM via tinywasm → pages/app.wasm
-3. Copy wasm_exec.js (mode-specific) → pages/
-4. Generate runtime.mjs (Cloudflare APIs) → pages/
-5. Generate _worker.js (Advanced Mode entry point) → pages/
-   ├─ Imports: wasm_exec.js, runtime.mjs
-   ├─ Routes /api/* to Go WASM handlers
-   └─ Routes all other requests to env.ASSETS.fetch()
+3. Generate combined _worker.js (contains ALL JS code inline)
+   ├─ Includes: wasm_exec.js + runtime.mjs + worker logic
+   ├─ Configurable API prefix (default: "/api/")
+   ├─ Configurable WASM filename (default: "app.wasm")
+   ├─ Routes API requests to Go WASM handlers
+   └─ Routes static requests to env.ASSETS.fetch()
 ```
 
 **Output Structure:**
 ```
 pages/
-├── _worker.js       # Advanced Mode entry point
+├── _worker.js     # Combined file with all JavaScript code inline
+└── app.wasm       # WASM binary
+```
+
+**Output Structure:**
+```
+pages/
+├── _worker.js       # Advanced Mode entry point (combined JS)
 ├── app.wasm
-├── wasm_exec.js
-├── runtime.mjs
 └── index.html       # Optional static files
 ```
 
