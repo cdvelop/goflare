@@ -135,7 +135,7 @@ export default {
 
 1. **Ensure output directory exists**
    ```go
-   outputDir := path.Join(g.tw.Config.AppRootDir, g.tw.Config.WorkerDirSubRelativeOutput)
+   outputDir := path.Join(g.tw.Config.AppRootDir, g.tw.Config.RelativeOutputDirectory)
    os.MkdirAll(outputDir, os.ModePerm)
    ```
 
@@ -199,7 +199,7 @@ import "github.com/cdvelop/goflare"
 func main() {
     g := goflare.New(&goflare.Config{
         AppRootDir:                 ".",
-        WorkerDirSubRelativeOutput: "deploy",
+        RelativeOutputDirectory: "deploy",
         MainInputFile:              "main.worker.go",
     })
     

@@ -97,7 +97,7 @@ import "github.com/cdvelop/goflare"
 
 g := goflare.New(&goflare.Config{
     AppRootDir:                 ".",
-    WorkerDirSubRelativeOutput: "deploy", // or "pages"
+    RelativeOutputDirectory: "deploy", // or "pages"
     MainInputFile:              "main.go",
     Logger: func(message ...any) {
         log.Println(message...)
@@ -141,7 +141,7 @@ import (
 func main() {
     g := goflare.New(&goflare.Config{
         AppRootDir:                 ".",
-        WorkerDirSubRelativeOutput: "pages",
+        RelativeOutputDirectory: "pages",
         MainInputFile:              "main.go",
         Logger:                     log.Println,
     })

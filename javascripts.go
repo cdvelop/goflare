@@ -9,6 +9,12 @@ import (
 func (g *Goflare) generateWorkerFile() error {
 	destPath := filepath.Join(g.tw.WebFilesSubRelativeJsOutput, "_worker.js")
 
+	// Create output directory if it doesn't exist
+	outputDir := filepath.Dir(destPath)
+	if err := os.MkdirAll(outputDir, 0755); err != nil {
+		return fmt.Errorf("failed to create output directory: %w", err)
+	}
+
 	// Read wasm_exec.js content
 	wasmExecContent, err := g.tw.JavascriptForInitializing("", "")
 	if err != nil {

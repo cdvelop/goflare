@@ -203,7 +203,7 @@ import (
 func main() {
     g := goflare.New(&goflare.Config{
         AppRootDir:                 ".",
-        WorkerDirSubRelativeOutput: "pages",  // Output to pages/ directory
+        RelativeOutputDirectory: "pages",  // Output to pages/ directory
         MainInputFile:              "main.go",
         Logger: func(message ...any) {
             log.Println(message...)
