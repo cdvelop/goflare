@@ -2,5 +2,5 @@ package goflare
 
 func (g *Goflare) generateWasmFile() error {
 
-	return g.tw.Change(g.tw.CurrentFile())
+	return g.tw.RecompileMainWasm()
 }

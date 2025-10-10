@@ -2,7 +2,7 @@ module github.com/cdvelop/goflare
 
 go 1.25.2
 
-require github.com/cdvelop/tinywasm v0.0.44
+require github.com/cdvelop/tinywasm v0.0.45
 
 require (
 	github.com/cdvelop/gobuild v0.0.16 // indirect
