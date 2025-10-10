@@ -1,14 +1,10 @@
 package goflare
 
 import (
-	"embed"
 	"path"
 
 	"github.com/cdvelop/tinywasm"
 )
-
-//go:embed assets
-var assets embed.FS
 
 type Goflare struct {
 	tw     *tinywasm.TinyWasm
