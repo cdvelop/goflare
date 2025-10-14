@@ -7,7 +7,7 @@ import (
 )
 
 func (g *Goflare) generateWorkerFile() error {
-	destPath := filepath.Join(g.tw.WebFilesSubRelativeJsOutput, "_worker.js")
+	destPath := filepath.Join(g.tw.WasmExecJsOutputDir, "_worker.js")
 
 	// Create output directory if it doesn't exist
 	outputDir := filepath.Dir(destPath)

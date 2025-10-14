@@ -114,7 +114,7 @@ export default {
    // Update tinywasm configuration to output to pages/ directory
    g.tw.Config.WebFilesRootRelative = pagesDir
    g.tw.Config.WebFilesSubRelative = pagesDir
-   g.tw.Config.WebFilesSubRelativeJsOutput = pagesDir
+   g.tw.Config.WasmExecJsOutputDir = pagesDir
    ```
 
 3. **Generate combined _worker.js**

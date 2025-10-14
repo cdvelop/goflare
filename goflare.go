@@ -2,7 +2,6 @@ package goflare
 
 import (
 	"fmt"
-	"path/filepath"
 
 	"github.com/cdvelop/tinywasm"
 )
@@ -16,7 +15,7 @@ type Config struct {
 	AppRootDir              string // default: "."
 	RelativeInputDirectory  string // input relative directory for source code server app.go to deploy app.wasm (relative) default: "web"
 	RelativeOutputDirectory string // output relative directory for worker.js and app.wasm file (relative) default: "deploy/cloudflare"
-	MainInputFile           string // eg: "main.worker.go"
+	MainInputFile           string // eg: "main.go"
 	Logger                  func(message ...any)
 	CompilingArguments      func() []string
 	// Pages-specific configuration
@@ -91,15 +90,15 @@ func New(c *Config) *Goflare {
 	}
 
 	tw := tinywasm.New(&tinywasm.Config{
-		AppRootDir:                  c.AppRootDir,
-		WebFilesRootRelative:        "",
-		WebFilesSubRelative:         c.RelativeOutputDirectory,
-		WebFilesSubRelativeJsOutput: c.RelativeOutputDirectory,
-		MainInputFile:               filepath.Join(c.RelativeInputDirectory, c.MainInputFile),
-		OutputName:                  outputName,
-		Logger:                      c.Logger,
-		CompilingArguments:          c.CompilingArguments,
-		DisableWasmExecJsOutput:     true, // Pages Advanced Mode embeds wasm_exec.js inline
+		AppRootDir:              c.AppRootDir,
+		SourceDir:               c.RelativeInputDirectory,
+		OutputDir:               c.RelativeOutputDirectory,
+		WasmExecJsOutputDir:     c.RelativeOutputDirectory,
+		MainInputFile:           c.MainInputFile,
+		OutputName:              outputName,
+		Logger:                  c.Logger,
+		CompilingArguments:      c.CompilingArguments,
+		DisableWasmExecJsOutput: true, // Pages Advanced Mode embeds wasm_exec.js inline
 	})
 
 	g := &Goflare{
