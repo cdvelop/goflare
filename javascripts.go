@@ -57,7 +57,7 @@ function createRuntimeContext({ env, ctx, binding }) {
     connect,
     binding,
   };
-}`, g.tw.OutputRelativePath())
+}`, g.config.OutputWasmFileName)
 }
 
 func (g *Goflare) getWorkerMjs() string {

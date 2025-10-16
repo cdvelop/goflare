@@ -1,6 +1,6 @@
 package goflare
 
-func (h *Goflare) Name() string { return "goflare" }
+func (h *Goflare) Name() string { return "GOFLARE" }
 func (h *Goflare) Label() string {
 	return "Build Workers"
 
