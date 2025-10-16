@@ -12,16 +12,13 @@ type Goflare struct {
 }
 
 type Config struct {
-	AppRootDir              string // default: "."
-	RelativeInputDirectory  string // input relative directory for source code server app.go to deploy app.wasm (relative) default: "web"
-	RelativeOutputDirectory string // output relative directory for worker.js and app.wasm file (relative) default: "deploy/cloudflare"
-	MainInputFile           string // eg: "main.go"
-	Logger                  func(message ...any)
-	CompilingArguments      func() []string
-	// Pages-specific configuration
-	//PagesApiRoutePrefix string // API route prefix for Pages Functions (default: "/api/")
-	OutputWasmFileName string // WASM file name (default: "worker.wasm")
-
+	AppRootDir                string // default: "."
+	RelativeInputDirectory    string // input relative directory for source code server app.go to deploy app.wasm (relative) default: "web"
+	RelativeOutputDirectory   string // output relative directory for worker.js and app.wasm file (relative) default: "deploy/cloudflare"
+	MainInputFile             string // eg: "main.go"
+	Logger                    func(message ...any)
+	CompilingArguments        func() []string
+	OutputWasmFileName        string // WASM file name (default: "worker.wasm")
 	BuildPageFunctionShortcut string // build assets wasm,js, json files to pages functions (default: "f")
 	BuildWorkerShortcut       string // build assets wasm,js, json files to workers (default: "w")
 }
