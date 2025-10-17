@@ -12,12 +12,12 @@ func (g *Goflare) GeneratePagesFiles() error {
 
 	err := g.generateWorkerFile()
 	if err != nil {
-		return fmt.Errorf("failed to generate _worker.js: %w", err)
+		return fmt.Errorf("failed to generate %s: %w", g.outputJsFileName, err)
 	}
 
 	err = g.generateWasmFile()
 	if err != nil {
-		return fmt.Errorf("failed to generate wasm file: %w", err)
+		return fmt.Errorf("failed to generate %s: %w", g.config.OutputWasmFileName, err)
 	}
 
 	return nil

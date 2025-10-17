@@ -28,6 +28,6 @@ func (h *Goflare) SupportedExtensions() []string {
 func (h *Goflare) UnobservedFiles() []string {
 	return []string{
 		h.tw.OutputRelativePath(),
-		h.tw.WasmExecJsOutputPath(),
+		filepath.Join(h.config.RelativeOutputDirectory, h.outputJsFileName),
 	}
 }

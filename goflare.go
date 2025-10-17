@@ -7,8 +7,9 @@ import (
 )
 
 type Goflare struct {
-	tw     *tinywasm.TinyWasm
-	config *Config
+	tw               *tinywasm.TinyWasm
+	config           *Config
+	outputJsFileName string // e.g., "_worker.js"
 }
 
 type Config struct {
@@ -30,7 +31,7 @@ func DefaultConfig() *Config {
 		AppRootDir:              ".",
 		RelativeInputDirectory:  "web",
 		RelativeOutputDirectory: "deploy/cloudflare",
-		MainInputFile:           "main.worker.go",
+		MainInputFile:           "main.go",
 		Logger:                  func(message ...any) { fmt.Println(message...) },
 		CompilingArguments:      nil,
 		OutputWasmFileName:      "worker.wasm",
@@ -99,8 +100,9 @@ func New(c *Config) *Goflare {
 	})
 
 	g := &Goflare{
-		tw:     tw,
-		config: c,
+		tw:               tw,
+		config:           c,
+		outputJsFileName: "_worker.js",
 	}
 
 	return g
