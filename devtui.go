@@ -49,9 +49,9 @@ func (h *Goflare) Change(newValue string, progress func(msgs ...any)) {
 	}
 }
 
-func (h *Goflare) Shortcuts() map[string]string {
-	return map[string]string{
-		h.config.BuildPageFunctionShortcut: "Build Cloudflare Pages Files",
-		h.config.BuildWorkerShortcut:       "Build Cloudflare Workers Files",
+func (h *Goflare) Shortcuts() []map[string]string {
+	return []map[string]string{
+		{h.config.BuildPageFunctionShortcut: "Build Cloudflare Functions Pages Files"},
+		{h.config.BuildWorkerShortcut: "Build Cloudflare Workers Files"},
 	}
 }
