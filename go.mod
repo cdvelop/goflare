@@ -7,7 +7,7 @@ require github.com/cdvelop/tinywasm v0.2.6
 require (
 	github.com/cdvelop/gobuild v0.0.16 // indirect
 	github.com/cdvelop/mdgo v0.0.3 // indirect
-	github.com/cdvelop/tinystring v0.10.1 // indirect
+	github.com/cdvelop/tinystring v0.10.2 // indirect
 )
 
 replace github.com/cdvelop/tinywasm => ../tinywasm
