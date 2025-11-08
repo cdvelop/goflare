@@ -109,12 +109,9 @@ func New(c *Config) *Goflare {
 }
 
 // SetCompilerMode changes the compiler mode
-// mode: "f" (fast/Go), "b" (bug/TinyGo debug), "m" (minimal/TinyGo production)
-func (g *Goflare) SetCompilerMode(mode string) {
-	g.tw.Change(mode, func(msgs ...any) {
-		// Silently handle mode change, or log if needed
-		if g.config.Logger != nil {
-			g.config.Logger(msgs...)
-		}
-	})
+// mode: "L" (Large fast/Go), "M" (Medium TinyGo debug), "S" (Small TinyGo production)
+func (g *Goflare) SetCompilerMode(newValue string, progress chan<- string) {
+	// Execute mode change
+	g.tw.Change(newValue, progress)
+
 }

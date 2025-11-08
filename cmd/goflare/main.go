@@ -20,7 +20,20 @@ func main() {
 	}
 
 	g := goflare.New(config)
-	g.SetCompilerMode("m") // Use TinyGo minimal mode
+
+	// Set compiler mode using channel
+	progressChan := make(chan string, 5)
+	done := make(chan bool)
+
+	go func() {
+		for msg := range progressChan {
+			fmt.Println(msg)
+		}
+		done <- true
+	}()
+
+	g.SetCompilerMode("S", progressChan) // Use TinyGo Small/production mode
+	<-done
 
 	fmt.Println("Generating Cloudflare Pages files...")
 
