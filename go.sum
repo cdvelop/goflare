@@ -4,5 +4,5 @@ github.com/cdvelop/mdgo v0.0.3 h1:j276BvzZ2PQJKllCsa5KwoLD2nMHPNo4Jwr4m6o1eC0=
 github.com/cdvelop/mdgo v0.0.3/go.mod h1:PSik5gSjVWrm5d1odtxhPVI0+a7k4ocsUwRUZMjUAe4=
 github.com/cdvelop/tinystring v0.10.3 h1:XOxJJtxjsg1YNVcX8MIQGfotId+TQkGQyt/YwmV7Ghg=
 github.com/cdvelop/tinystring v0.10.3/go.mod h1:v6+hdP7eaOZn9qoaPm4GQnX8cRzUzD2mEjILAkPLkyo=
-github.com/cdvelop/tinywasm v0.3.2 h1:k2i4Adrm8R3ZjP41DHG/GXjiskjUcxpYJpx78+UFb48=
-github.com/cdvelop/tinywasm v0.3.2/go.mod h1:M9n7ia0DiMECIF+mVHaVGYIAbx6pHqwrsgPyySYz6jM=
+github.com/cdvelop/tinywasm v0.3.4 h1:sYSQq/0TkWMFs+62WVB4C8106AUyEs7ZR6JEoj/h3ro=
+github.com/cdvelop/tinywasm v0.3.4/go.mod h1:8j8nKd6uGc/Hs6pGADx1wA1/BcLq6zY1FbXUmggliSY=
