@@ -194,7 +194,7 @@ deploy:
 ```go
 package main
 
-import "github.com/cdvelop/goflare"
+import "github.com/tinywasm/goflare"
 
 func main() {
     g := goflare.New(&goflare.Config{

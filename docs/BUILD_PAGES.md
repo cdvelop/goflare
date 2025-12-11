@@ -197,7 +197,7 @@ package main
 
 import (
     "log"
-    "github.com/cdvelop/goflare"
+    "github.com/tinywasm/goflare"
 )
 
 func main() {

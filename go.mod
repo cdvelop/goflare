@@ -1,11 +1,11 @@
-module github.com/cdvelop/goflare
+module github.com/tinywasm/goflare
 
 go 1.25.2
 
-require github.com/cdvelop/tinywasm v0.3.6
+require github.com/tinywasm/client v0.3.8
 
 require (
-	github.com/cdvelop/gobuild v0.0.16 // indirect
-	github.com/cdvelop/mdgo v0.0.3 // indirect
-	github.com/cdvelop/tinystring v0.11.0 // indirect
+	github.com/tinywasm/fmt v0.11.0 // indirect
+	github.com/tinywasm/gobuild v0.0.16 // indirect
+	github.com/tinywasm/mdgo v0.0.3 // indirect
 )

@@ -47,7 +47,7 @@ func main() {
 ## Installation
 
 ```bash
-go install github.com/cdvelop/goflare/cmd/goflare@latest
+go install github.com/tinywasm/goflare/cmd/goflare@latest
 ```
 
 ## Output

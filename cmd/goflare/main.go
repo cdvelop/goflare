@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/cdvelop/goflare"
+	"github.com/tinywasm/goflare"
 )
 
 func main() {

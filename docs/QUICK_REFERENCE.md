@@ -93,7 +93,7 @@ compatibility_date = "2023-04-30"
 ### Setup
 
 ```go
-import "github.com/cdvelop/goflare"
+import "github.com/tinywasm/goflare"
 
 g := goflare.New(&goflare.Config{
     AppRootDir:                 ".",
@@ -135,7 +135,7 @@ package main
 
 import (
     "log"
-    "github.com/cdvelop/goflare"
+    "github.com/tinywasm/goflare"
 )
 
 func main() {

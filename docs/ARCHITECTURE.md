@@ -247,7 +247,7 @@ package goflare
 
 import (
   _ "embed"
-  "github.com/cdvelop/tinywasm"
+  "github.com/tinywasm/client"
 )
 
 //go:embed assets

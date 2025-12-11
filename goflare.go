@@ -3,11 +3,11 @@ package goflare
 import (
 	"fmt"
 
-	"github.com/cdvelop/tinywasm"
+	"github.com/tinywasm/client"
 )
 
 type Goflare struct {
-	tw               *tinywasm.TinyWasm
+	tw               *client.TinyWasm
 	config           *Config
 	outputJsFileName string // e.g., "_worker.js"
 }
@@ -87,7 +87,7 @@ func New(c *Config) *Goflare {
 		outputName = outputName[:len(outputName)-5]
 	}
 
-	tw := tinywasm.New(&tinywasm.Config{
+	tw := client.New(&client.Config{
 		AppRootDir:              c.AppRootDir,
 		SourceDir:               c.RelativeInputDirectory,
 		OutputDir:               c.RelativeOutputDirectory,
