@@ -88,16 +88,16 @@ func New(c *Config) *Goflare {
 	}
 
 	tw := client.New(&client.Config{
-		AppRootDir:              c.AppRootDir,
-		SourceDir:               c.RelativeInputDirectory,
-		OutputDir:               c.RelativeOutputDirectory,
-		WasmExecJsOutputDir:     c.RelativeOutputDirectory,
-		MainInputFile:           c.MainInputFile,
-		OutputName:              outputName,
-		Logger:                  c.Logger,
-		CompilingArguments:      c.CompilingArguments,
-		DisableWasmExecJsOutput: true, // Pages Advanced Mode embeds wasm_exec.js inline
+		SourceDir:          c.RelativeInputDirectory,
+		OutputDir:          c.RelativeOutputDirectory,
+		Logger:             c.Logger,
+		CompilingArguments: c.CompilingArguments,
 	})
+	tw.SetAppRootDir(c.AppRootDir)
+	tw.SetMainInputFile(c.MainInputFile)
+	tw.SetOutputName(outputName)
+	tw.SetDisableWasmExecJsOutput(true) // Pages Advanced Mode embeds wasm_exec.js inline
+	tw.SetWasmExecJsOutputDir(c.RelativeOutputDirectory)
 
 	g := &Goflare{
 		tw:               tw,
