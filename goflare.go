@@ -7,7 +7,7 @@ import (
 )
 
 type Goflare struct {
-	tw               *client.TinyWasm
+	tw               *client.WasmClient
 	config           *Config
 	outputJsFileName string // e.g., "_worker.js"
 }
@@ -96,7 +96,7 @@ func New(c *Config) *Goflare {
 	tw.SetAppRootDir(c.AppRootDir)
 	tw.SetMainInputFile(c.MainInputFile)
 	tw.SetOutputName(outputName)
-	tw.SetDisableWasmExecJsOutput(true) // Pages Advanced Mode embeds wasm_exec.js inline
+	// tw.SetDisableWasmExecJsOutput(true) // Defaults to disabled now
 	tw.SetWasmExecJsOutputDir(c.RelativeOutputDirectory)
 
 	g := &Goflare{

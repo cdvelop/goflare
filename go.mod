@@ -2,7 +2,7 @@ module github.com/tinywasm/goflare
 
 go 1.25.2
 
-require github.com/tinywasm/client v0.3.17
+require github.com/tinywasm/client v0.3.18
 
 require (
 	github.com/tinywasm/devflow v0.0.20 // indirect
