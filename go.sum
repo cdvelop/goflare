@@ -1,5 +1,5 @@
-github.com/tinywasm/client v0.3.18 h1:6W7uVUiMg9Dux5+HAqjPvoDZ0mbQPHaHn8ZSae/j7O0=
-github.com/tinywasm/client v0.3.18/go.mod h1:FrS83KmatYIUcZtEvRBcoi8IxpAAbJuxb4YpFLc5cHQ=
+github.com/tinywasm/client v0.4.0 h1:Tre2e3cf48ITy5CBd/htcnPw0Z3IMBWjKcpK8Syg8CA=
+github.com/tinywasm/client v0.4.0/go.mod h1:FrS83KmatYIUcZtEvRBcoi8IxpAAbJuxb4YpFLc5cHQ=
 github.com/tinywasm/devflow v0.0.20 h1:SQI+dvOtQvQA4SaaQjUI4Exak0E7F60B/aomaEl7wAQ=
 github.com/tinywasm/devflow v0.0.20/go.mod h1:LAj19lRFxaLXFhzpYJx9tWkf1D2B+A2A8yzMLTt49lw=
 github.com/tinywasm/fmt v0.12.3 h1:Yvy6q3GBvDgOJUuwdlABBJJkzkOIovhTGjv0b1PZXcE=
