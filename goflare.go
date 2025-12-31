@@ -1,8 +1,6 @@
 package goflare
 
 import (
-	"fmt"
-
 	"github.com/tinywasm/client"
 )
 
@@ -10,6 +8,7 @@ type Goflare struct {
 	tw               *client.WasmClient
 	config           *Config
 	outputJsFileName string // e.g., "_worker.js"
+	log              func(message ...any)
 }
 
 type Config struct {
@@ -17,7 +16,6 @@ type Config struct {
 	RelativeInputDirectory    string // input relative directory for source code server app.go to deploy app.wasm (relative) default: "web"
 	RelativeOutputDirectory   string // output relative directory for worker.js and app.wasm file (relative) default: "deploy/cloudflare"
 	MainInputFile             string // eg: "main.go"
-	Logger                    func(message ...any)
 	CompilingArguments        func() []string
 	OutputWasmFileName        string // WASM file name (default: "worker.wasm")
 	BuildPageFunctionShortcut string // build assets wasm,js, json files to pages functions (default: "f")
@@ -32,7 +30,6 @@ func DefaultConfig() *Config {
 		RelativeInputDirectory:  "web",
 		RelativeOutputDirectory: "deploy/cloudflare",
 		MainInputFile:           "main.go",
-		Logger:                  func(message ...any) { fmt.Println(message...) },
 		CompilingArguments:      nil,
 		OutputWasmFileName:      "worker.wasm",
 
@@ -69,10 +66,6 @@ func New(c *Config) *Goflare {
 			c.OutputWasmFileName = dc.OutputWasmFileName
 		}
 
-		if c.Logger == nil {
-			c.Logger = dc.Logger
-		}
-
 		if c.BuildPageFunctionShortcut == "" {
 			c.BuildPageFunctionShortcut = dc.BuildPageFunctionShortcut
 		}
@@ -90,7 +83,6 @@ func New(c *Config) *Goflare {
 	tw := client.New(&client.Config{
 		SourceDir:          c.RelativeInputDirectory,
 		OutputDir:          c.RelativeOutputDirectory,
-		Logger:             c.Logger,
 		CompilingArguments: c.CompilingArguments,
 	})
 	tw.SetAppRootDir(c.AppRootDir)
@@ -98,6 +90,7 @@ func New(c *Config) *Goflare {
 	tw.SetOutputName(outputName)
 	// tw.SetDisableWasmExecJsOutput(true) // Defaults to disabled now
 	tw.SetWasmExecJsOutputDir(c.RelativeOutputDirectory)
+	tw.SetBuildOnDisk(true)
 
 	g := &Goflare{
 		tw:               tw,
@@ -108,10 +101,22 @@ func New(c *Config) *Goflare {
 	return g
 }
 
+func (g *Goflare) SetLog(f func(message ...any)) {
+	g.log = f
+	if g.tw != nil {
+		g.tw.SetLog(f)
+	}
+}
+
+func (g *Goflare) Logger(messages ...any) {
+	if g.log != nil {
+		g.log(messages...)
+	}
+}
+
 // SetCompilerMode changes the compiler mode
 // mode: "L" (Large fast/Go), "M" (Medium TinyGo debug), "S" (Small TinyGo production)
-func (g *Goflare) SetCompilerMode(newValue string, progress chan<- string) {
+func (g *Goflare) SetCompilerMode(newValue string) {
 	// Execute mode change
-	g.tw.Change(newValue, progress)
-
+	g.tw.Change(newValue)
 }
