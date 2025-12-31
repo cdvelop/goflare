@@ -2,7 +2,7 @@ module github.com/tinywasm/goflare
 
 go 1.25.2
 
-require github.com/tinywasm/client v0.4.2
+require github.com/tinywasm/client v0.4.3
 
 require (
 	al.essio.dev/pkg/shellescape v1.6.0 // indirect
@@ -14,5 +14,3 @@ require (
 	github.com/zalando/go-keyring v0.2.6 // indirect
 	golang.org/x/sys v0.39.0 // indirect
 )
-
-replace github.com/tinywasm/client => ../client
